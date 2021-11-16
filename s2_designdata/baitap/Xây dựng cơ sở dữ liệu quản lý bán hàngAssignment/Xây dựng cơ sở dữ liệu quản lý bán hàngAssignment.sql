@@ -13,7 +13,7 @@ create table `order` (
 o_id int not null auto_increment primary key,
 c_id int not null ,
 o_date date not null,
-o_total_price int not null,
+o_total_price int  null,
 foreign key(c_id) references customer(c_id)
 );
 
@@ -29,6 +29,7 @@ create table oder_detail(
 o_id int not null ,
 p_id int not null,
 primary key(o_id,p_id),
+qd_qty int not null,
 foreign key(p_id) references product(p_id),
 foreign key(o_id) references `order`(o_id)
 );
