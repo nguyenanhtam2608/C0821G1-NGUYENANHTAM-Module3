@@ -70,6 +70,7 @@ ma_dich_vu int auto_increment primary key,
 ten_dich_vu varchar(45),
 dien_tich double,
 so_nguoi_toi_da int,
+chi_phi_thue double,
 tieu_chuan_phong varchar(45),
 mo_ta_tien_ich_khac varchar(45),
 dien_tich_ho_boi double,
@@ -85,6 +86,7 @@ ma_hop_dong int auto_increment primary key,
 ngay_lam_hop_dong datetime,
 ngay_ket_thuc datetime,
 tien_dat_coc double,
+tong_tien double,
 ma_nhan_vien int,
 ma_khach_hang int,
 ma_dich_vu int,
@@ -110,15 +112,6 @@ so_luong int,
 foreign key (ma_hop_dong) references hop_dong(ma_hop_dong), 
 foreign key (ma_dich_vu_di_kem) references dich_vu_di_kem(ma_dich_vu_di_kem)
 );
-
-
-
-
-
-
-
-
-
 
 
 

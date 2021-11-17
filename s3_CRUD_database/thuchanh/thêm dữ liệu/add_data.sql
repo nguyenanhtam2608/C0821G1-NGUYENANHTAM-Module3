@@ -1,4 +1,8 @@
+
 use quan_ly_sinh_vien;
+
+
+
 insert into class 
 values (1,'a1','2008-12-02',1); 
 insert into class 
@@ -7,13 +11,13 @@ insert into class
 values (3,'a3',current_date,0); 
 
 insert into student(stu_name,address,phone,`status`,class_id)
-values('hung','HN','0987654321',1,1);
+values('hung1','HN','0987654321',1,1);
 
 insert into student(stu_name,address,`status`,class_id)
-values('hung','HN',1,1);
+values('hung2','HN',1,1);
 
 insert into student(stu_name,address,phone,`status`,class_id)
-values('hung','HCM','0987654321',0,2);
+values('hung3','HCM','0987654321',0,2);
 
 INSERT INTO subjcet
 VALUES (1, 'CF', 5, 1),
