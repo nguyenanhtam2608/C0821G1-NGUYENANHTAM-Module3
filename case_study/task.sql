@@ -248,11 +248,13 @@ where hd.so_luong >10;
 -- Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống,
 -- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
 
-select ma_nhan_vien,ho_ten, email, sdt, ngay_sinh, dia_chi
-from nhan_vien
-union all 
-select ma_khach_hang,ho_ten, email, sdt, ngay_sinh, dia_chi
-from khach_hang
+
+select n.ma_nhan_vien , k.ma_khach_hang, n.ho_ten as ho_ten_nhan_vien , k.ho_ten as ho_ten_khach_hang , n.email as email_nhan_vien , k.email as email_khach_hang,
+n.sdt as sdt_nv , k.sdt as sdt_kh , n.ngay_sinh as ngay_sinh_nv, k.ngay_sinh as ngay_sinh_kh , n.dia_chi as dia_chi_nv , k.dia_chi as dia_chi_kh
+from hop_dong h
+inner join nhan_vien n on h.ma_nhan_vien = n.ma_nhan_vien
+inner join khach_hang k on h.ma_khach_hang = k.ma_khach_hang
+
 
 
 
