@@ -172,7 +172,7 @@ inner join hop_dong_chi_tiet hd on h.ma_hop_dong = hd.ma_hop_dong
 		 inner join nhan_vien nv on h.ma_nhan_vien = nv.ma_nhan_vien
          inner join dich_vu dv on h.ma_dich_vu = dv.ma_dich_vu
          where (h.ngay_lam_hop_dong between '2019-01-01' and '2019-06-01') and h.ma_hop_dong = hd.ma_hop_dong
-            group by h.ma_hop_dong
+		group by h.ma_hop_dong
             );
 		
 -- task 13
@@ -203,44 +203,46 @@ inner join vi_tri v on n.ma_vi_tri = v.ma_vi_tri
 inner join trinh_do t on n.ma_trinh_do = t.ma_trinh_do
 inner join bo_phan b on n.ma_bo_Phan = b.ma_bo_phan
 inner join hop_dong h on n.ma_nhan_vien = h.ma_nhan_vien 
-where h.ngay_lam_hop_dong between '2018-01-01' and '2019-01-01'
+where h.ngay_lam_hop_dong between '2018-01-01' and '2019-01-01' 
 group by h.ma_nhan_vien
 having so_luong_lam_hop_dong <=3;
 
 -- task 16
          
-
-select n.ma_nhan_vien ,n.ho_ten,t.ten_trinh_do,b.ten_bo_phan,n.sdt,n.dia_chi ,count(h.ma_nhan_vien) as so_luong_lam_hop_dong
-from nhan_vien n
-inner join vi_tri v on n.ma_vi_tri = v.ma_vi_tri
-inner join trinh_do t on n.ma_trinh_do = t.ma_trinh_do
-inner join bo_phan b on n.ma_bo_Phan = b.ma_bo_phan
-inner join hop_dong h on n.ma_nhan_vien = h.ma_nhan_vien 
-where h.ngay_lam_hop_dong between '2017-01-01' and '2019-01-01'
-group by h.ma_nhan_vien
-having so_luong_lam_hop_dong =0  ;
-
-
 SET FOREIGN_KEY_CHECKS=0;-- vô hiệu hóa khóa ngoại
-delete s.*
-from nhan_vien n 
-inner join vi_tri v on n.ma_vi_tri = v.ma_vi_tri
-inner join trinh_do t on n.ma_trinh_do = t.ma_trinh_do
-inner join bo_phan b on n.ma_bo_Phan = b.ma_bo_phan
-inner join hop_dong h on n.ma_nhan_vien = h.ma_nhan_vien 
+delete 
+from nhan_vien
+where ma_nhan_vien not in (
+select ma_nhan_vien
+from hop_dong
+where ngay_lam_hop_dong between '2017-01-01' and '2019-12-31');
+
+select * from nhan_vien;
+select * from hop_dong;
 
 
 
-        
+-- task 17 
+select * from loai_khach;
 
+update loai_khach l
+inner join khach_hang k on l.ma_loai_khach = k.ma_loai_khach 
+inner join hop_dong h on h.ma_khach_hang = k.ma_khach_hang
+set l.ten_loai_khach = 'diamond' 
+where( h.tong_tien >10000000) and( h.ngay_lam_hop_dong between '2019-01-01' and '2019-12-31') and (l.ten_loai_khach = 'platinum') ;
 		
+-- task 18
+SET FOREIGN_KEY_CHECKS=0;-- vô hiệu hóa khóa ngoại
+delete 
+from hop_dong 
+where year(ngay_lam_hop_dong) <2016 ;
 
-         
-         
-         
-		
-
-
+-- task 19 
+select * from dich_vu_di_kem;
+update 	dich_vu_di_kem d
+inner join hop_dong_chi_tiet hd on d.ma_dich_vu_di_kem = hd.ma_dich_vu_di_kem
+set d.gia = gia*2
+where hd.so_luong >10;
 
 -- task 20 
 -- Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống,
