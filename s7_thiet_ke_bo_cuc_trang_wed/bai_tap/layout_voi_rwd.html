@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="rwd.css">
+    <style>
+.login{
+
+    padding-left: 750px;
+}
+        .head{
+            position: fixed;
+            background: black;
+            color: #CDCDCD;
+            font-weight:bold; /* In đậm chữ */
+            width: 100%;
+            top: 0;
+            position: fixed;
+
+        }
+        .left{
+            background:slategray;
+            height: 900px;
+        }
+        .right{
+            background:slategray;
+            height: 900px;
+        }
+        .footer{
+            text-align: center;
+            background: silver;
+            color: red ;
+        }
+        .text{
+            font-weight: bold;
+        }
+        .center {
+            margin-bottom: 10%;
+
+        }
+        body{
+            font-size: 30px;
+        }
+        .ads{
+            background: bisque;
+            text-align: center;
+            border: 100px;
+            margin:20px;
+            width: 90%;
+
+        }
+        ul{
+            position: absolute;
+            /*bỏ dấu chấm trước list*/
+            list-style: none;
+
+        }
+        li{
+        visibility: hidden;
+            /*Làm một phần tử trở thành vô hình (invisible), nhưng nó vẫn chiếm không gian*/
+
+        }
+
+     .click:hover li{
+         visibility: visible;
+     /*(Mặc định), Các phần tử "có thể được nhìn thấy" (visible) là mặc định.*/
+         color: blue;
+     }
+
+    </style>
+</head>
+<body>
+<div class="row head" >
+    <div class="col-1">Logo</div>
+    <div class="col-1 click" ><a> Home</a>
+        <ul >
+                <li>Link</li>
+                <li>Link</li>
+
+        </ul>
+   </div>
+    <div class="col-1">About</div>
+    <div class="col-1">Projects</div>
+    <div class="col-1">Contact</div>
+    <div class="col-7 login">Login</div>
+</div>
+
+<div class="row">
+    <div class="col-3 left"> </div>
+    <div class="col-6 center">
+        <h1> Welcome</h1>
+    <p class="text">
+        Cách mạng công nghiệp hay còn gọi là Cách mạng công nghiệp lần thứ nhất là cuộc cách mạng trong lĩnh vực sản xuất; là sự thay đổi cơ bản các điều kiện kinh tế xã hội, văn hóa và kỹ thuật, xuất phát từ nước Anh sau đó lan tỏa ra toàn thế giới. Trong thời kỳ này, nền kinh tế giản đơn, quy mô nhỏ, dựa trên lao động chân tay sau đó được thay thế bằng công nghiệp và chế tạo máy móc quy mô lớn. Tên gọi "Cách mạng công nghiệp" thường dùng để chỉ giai đoạn thứ nhất của nó diễn ra ở cuối thế kỷ 18 và đầu thế kỷ 19. Mở ra kỷ nguyên mới trong lịch sử nhân loại
+<hr>
+    </p>
+    <h3>Test</h3>
+        <p> Văn Bản</p>
+    </div>
+
+    <div class="col-3 right">
+        <div class="row">
+            <br>
+            <div class="col-12 ads "><p>ADS</p></div>
+        </div>
+        <div class="row "></div>
+        <div class="col-12 ads "><p> ADS</p> </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 footer">FOOTER TEXT </div>
+</div>
+</body>
+</html>
