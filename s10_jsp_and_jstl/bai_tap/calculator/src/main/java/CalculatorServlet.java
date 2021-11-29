@@ -16,21 +16,28 @@ public class CalculatorServlet extends HttpServlet {
         String numberTwo = request.getParameter("numberTwo");
         String operator = request.getParameter("operator");
 
+        try {
 
-        if (operator.equals("sum")) {
-            double sum = Double.parseDouble(numberOne) + Double.parseDouble(numberTwo);
-            System.out.println("Tổng là ");
-            request.setAttribute("result", sum);
-            request.getRequestDispatcher("display.jsp").forward(request, response);
+
+            if (operator.equals("sum")) {
+                double sum = Double.parseDouble(numberOne) + Double.parseDouble(numberTwo);
+                System.out.println("Tổng là ");
+                request.setAttribute("result", sum);
+                request.getRequestDispatcher("display.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
-
-        if (operator.equals("sub")) {
-            double sub = Double.parseDouble(numberOne) - Double.parseDouble(numberTwo);
-            request.setAttribute("result", sub);
-            request.getRequestDispatcher("display.jsp").forward(request, response);
+        try {
+            if (operator.equals("sub")) {
+                double sub = Double.parseDouble(numberOne) - Double.parseDouble(numberTwo);
+                request.setAttribute("result", sub);
+                request.getRequestDispatcher("display.jsp").forward(request, response);
+            }
+        }catch (Exception e){
+            System.out.println(e);
         }
-
         if (operator.equals("core")) {
             double core = Double.parseDouble(numberOne) * Double.parseDouble(numberTwo);
             request.setAttribute("result", core);
@@ -42,7 +49,7 @@ public class CalculatorServlet extends HttpServlet {
                 request.setAttribute("result", div);
                 request.getRequestDispatcher("display.jsp").forward(request, response);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
