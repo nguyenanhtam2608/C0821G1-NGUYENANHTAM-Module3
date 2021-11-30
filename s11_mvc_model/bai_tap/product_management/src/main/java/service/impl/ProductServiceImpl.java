@@ -44,5 +44,18 @@ public class ProductServiceImpl implements IProductService {
     public void remove(int id) {
 
     }
-}
 
+    @Override
+    public boolean saveProduct(Product product) {
+        if (!product.getName().matches("^[a-z A-Z]{2,}")) {
+            return false;
+        }
+        if(product.getId()<0){
+            return false;
+        }
+        boolean isCreate = products.saveProductRepo(product);
+
+
+    }
+
+}

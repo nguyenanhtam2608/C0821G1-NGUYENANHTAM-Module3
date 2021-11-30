@@ -14,8 +14,15 @@
 <body>
 <h1>Products</h1>
 <p>
-    <%--    <a href="/products?action=create">Create new Products</a>--%>
+    <a href="/products?action=create"><button> Thêm mới sản phẩm</button>   </a>
 </p>
+
+<form action="/products" method="get">
+<input type="hidden" name="action" value="search">
+    <input type="text" name="name">
+    <button>Tìm kiếm</button>
+
+</form>
 <table border="1">
     <tr>
         <td>id</td>
@@ -31,7 +38,6 @@
             <td><c:out value="${product.price}"/></td>
             <td><c:out value="${product.description}"/></td>
             <td><c:out value="${product.producer}"/></td>
-
         </tr>
     </c:forEach>
 </table>

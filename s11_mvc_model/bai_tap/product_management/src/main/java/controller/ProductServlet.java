@@ -21,7 +21,8 @@ public class ProductServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "create":
+             case "create":
+      goPageCreate(request,response);
                 break;
             case "edit":
                 break;
@@ -33,6 +34,10 @@ public class ProductServlet extends HttpServlet {
                 listProduct(request, response);
                 break;
         }
+    }
+
+    private void goPageCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/create.jsp").forward(request,response);
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) {
@@ -56,6 +61,7 @@ public class ProductServlet extends HttpServlet {
         }
         switch (action) {
             case "create":
+                createProduct(request,response);
                 break;
             case "edit":
                 break;
@@ -64,5 +70,21 @@ public class ProductServlet extends HttpServlet {
             default:
                 break;
         }
+    }
+
+    private void createProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        double price = Double.parseDouble(request.getParameter("price"));
+        String description = request.getParameter("description");
+        String producer = request.getParameter("producer");
+        Product product = new Product(id,name,price,description,producer);
+        boolean isCreate = iProductService.saveProduct(product);
+        if(isCreate){
+
+        }else {
+
+        }
+
     }
 }
